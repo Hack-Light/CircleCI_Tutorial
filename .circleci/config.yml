@@ -13,8 +13,9 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run:
+          # This prints my name
           command: |
-            echo $MY_NAME
+            echo $MY_NAME 
 
 workflows:
   say-hello-workflow:
