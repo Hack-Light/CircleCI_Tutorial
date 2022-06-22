@@ -6,13 +6,24 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run:
-          command: echo "hello Onoh Somtochukwu" > output.txt
+          command: |
+            echo "hello Onoh Somtochukwu" > ~/output.txt
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths:
             - output.txt
+  print_output_file:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: cat ~/output.txt
 
 workflows:
   say-hello-workflow:
     jobs:
       - save_hello_world_output
+      - print_output_file:
+          requires:
+            - save_hello_world_output
