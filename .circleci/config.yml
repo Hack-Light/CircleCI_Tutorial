@@ -8,9 +8,9 @@ jobs:
       - run:
           command: echo "hello Onoh Somtochukwu" > output.txt
       - persist_to_workspace:
-          root: /temp/dir
+          root: .
           paths:
-          - output.txt
+            - output.txt
 
 workflows:
   say-hello-workflow:
