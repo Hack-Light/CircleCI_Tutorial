@@ -8,8 +8,8 @@ jobs:
       - run:
           command: echo "hello Onoh Somtochukwu" > output.txt
       - persist_to_workspace:
-        root: /temp/dir
-        paths:
+          root: /temp/dir
+          paths:
           - output.txt
 
 workflows:
