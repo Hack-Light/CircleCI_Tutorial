@@ -41,10 +41,11 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: 
-        command: return 1
+        command: exit 1
       - run: 
-          command: echo "Failed"
-          when: on_fail
+        name: on error
+        command: echo "Failed"
+        when: on_fail
 
 workflows:
   say-hello-workflow:
