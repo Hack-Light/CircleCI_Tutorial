@@ -1,5 +1,15 @@
 version: 2.1
 
+commands:
+  print_pipeline_id:
+    description: "Learning can be fun"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo << parameters.to >>
+
 jobs:
   save_hello_world_output:
     docker:
@@ -12,6 +22,7 @@ jobs:
           root: ~/
           paths:
             - output.txt
+
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
@@ -20,6 +31,13 @@ jobs:
           at: ~/
       - run: cat ~/output.txt
 
+  sayhello:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print_pipeline_id:
+        to: $CIRCLE_WORKFLOW_ID
+
 workflows:
   say-hello-workflow:
     jobs:
@@ -27,3 +45,4 @@ workflows:
       - print_output_file:
           requires:
             - save_hello_world_output
+      - sayhello
