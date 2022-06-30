@@ -18,7 +18,7 @@
   become: yes
   apt:
     name: ["nodejs", "npm"]
-    state: 13.8.0
+    state: latest
     update_cache: yes
 
 - name: "install pm2"
@@ -28,6 +28,10 @@
     global: yes
     production: yes
     state: present
+
+- name: "install nodejs 13.8.0"
+  become: yes
+  shell: n 13.8.0
 
 - name: Creates directory
   file:
