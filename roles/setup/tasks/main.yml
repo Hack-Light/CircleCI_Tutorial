@@ -23,7 +23,7 @@
 
 - name: "install nodejs 13.8.0"
   become: yes
-  shell: apt install nodejs13.8.0
+  shell: apt install nodejs
 
 - name: "install pm2"
   become: yes
