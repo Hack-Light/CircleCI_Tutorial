@@ -42,5 +42,5 @@ workflows:
   # Name the workflow
   createInfrastructure:
     jobs:
-      - create-infrastructure
-      # - configure-infrastructure
+      # - create-infrastructure
+      - configure-infrastructure
