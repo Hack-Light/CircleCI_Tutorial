@@ -131,17 +131,17 @@ workflows:
   # Name the workflow
   createInfrastructure:
     jobs:
-  #     # - create-infrastructure
-  #     - configure-infrastructure
-  #     - smoke-test:
-  #         requires:
-  #           - configure-infrastructure
+      #     # - create-infrastructure
+      #     - configure-infrastructure
+      #     - smoke-test:
+      #         requires:
+      #           - configure-infrastructure
       - create_and_deploy_front_end
-            - promote_to_production:
-                requires: 
-                  - create_and_deploy_front_end
+      - promote_to_production:
+          requires:
+            - create_and_deploy_front_end
+      - get_last_deployment_id
+      - clean_up_old_front_end:
+          requires:
             - get_last_deployment_id
-            - clean_up_old_front_end:
-                requires:
-                  - get_last_deployment_id
-                  - promote_to_production
+            - promote_to_production
