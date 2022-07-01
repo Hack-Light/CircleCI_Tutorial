@@ -49,7 +49,7 @@ jobs:
     steps:
       - run:
           name: smoke test
-          command: return 0
+          command: return 1
       - destroy_environment
       # - run: apk add --update curl
       # - run:
